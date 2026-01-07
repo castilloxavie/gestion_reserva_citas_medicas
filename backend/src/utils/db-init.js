@@ -12,14 +12,11 @@ export const initializeModelsDb = async () => {
     try {
 
         await sequelizeDB.authenticate()
-        console.log("Conexión a la base de datos exitosa");
 
         relationshipModels()
 
         await sequelizeDB.sync({alter: false})
-        console.log("Modelos o Tablas sincronizados con la base de datos");
-
-
+    
     } catch (error) {
         console.error("Error al conectar a la base de datos:", error);
     }
