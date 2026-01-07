@@ -12,7 +12,13 @@ export const Doctor_schedules = sequelizeDB.define(
     },
     {
         timestamps: true,
-        tableName: "doctor_schedules"
+        tableName: "doctor_schedules",
+        validate: {
+            startBeforeEnd() {
+                if(this.start_time && this.end_time && this.start_time >= this.end_time) throw new Error("La hora de inicio debe ser antes de la hora de fin")
+            }
+                
+        }
     }
 
 )

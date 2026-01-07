@@ -16,6 +16,9 @@ export const initializeModelsDb = async () => {
         relationshipModels()
 
         await sequelizeDB.sync({alter: false})
+
+        console.log("Se realizo el proceso de manera correcta (db)");
+        
     
     } catch (error) {
         console.error("Error al conectar a la base de datos:", error);
