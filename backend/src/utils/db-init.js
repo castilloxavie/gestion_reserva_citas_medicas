@@ -7,6 +7,7 @@ import { Patients } from "../models/patients.js"
 import { Rooms } from "../models/rooms.js"
 import { Specializations } from "../models/specializations.js"
 import { Users } from "../models/users.js"
+import { Receptionists } from "../models/receptionists.js"
 
 export const initializeModelsDb = async () => {
     try {
@@ -24,5 +25,4 @@ export const initializeModelsDb = async () => {
         console.error("Error al conectar a la base de datos:", error);
     }
 }
-
 initializeModelsDb()

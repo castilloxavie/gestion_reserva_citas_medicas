@@ -5,6 +5,8 @@ import { Rooms } from "./rooms.js"
 import { Specializations } from "./specializations.js"
 import { Users } from "./users.js"
 import { Doctor_schedules } from "./doctor_schedules.js"
+import { Receptionists } from "./receptionists.js"
+
 
 export const relationshipModels = () => {
 
@@ -15,6 +17,10 @@ export const relationshipModels = () => {
     //Users -> Doctors (1:many)
     Users.hasMany(Doctors, {foreignKey: "user_id", onDelete: "CASCADE", onUpdate: "CASCADE"})
     Doctors.belongsTo(Users, {foreignKey: "user_id", onDelete: "CASCADE", onUpdate: "CASCADE"})
+
+    //User -> Receptionists (1:many)
+    Users.hasMany(Receptionists, {foreignKey : "user_id", onDelete: "CASCADE", onUpdate: "CASCADE"})
+    Receptionists.belongsTo(Users, {foreignKey : "user_id", onDelete: "CASCADE", onUpdate: "CASCADE"})
 
     //specializations -> Doctors (1:many)
     Specializations.hasMany(Doctors, {foreignKey: "specialization_id", onDelete: "RESTRICT", onUpdate: "CASCADE"})
