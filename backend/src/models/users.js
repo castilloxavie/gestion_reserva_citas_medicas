@@ -8,8 +8,9 @@ export const Users = sequelizeDB.define(
         first_name: {type:DataTypes.STRING, allowNull: false, validate: {notEmpty: true, len: [2, 50]}},
         last_name: {type:DataTypes.STRING, allowNull: false, validate: {notEmpty: true, len: [2, 50]}},
         email: {type:DataTypes.STRING, allowNull: false, unique: true, validate: {isEmail: true, notEmpty: true}},
-        password: {type:DataTypes.STRING, allowNull: false, validate: {notEmpty: true, len: [8, 50]}},
+        password: {type:DataTypes.STRING, allowNull: false, validate: {notEmpty: true}},
         roles: {type:DataTypes.ENUM("admin", "receptionist", "doctor", "patient"), allowNull: false},
+        status: {type:DataTypes.ENUM("active", "inactive"), defaultValue: "active", allowNull: false}
     },
     {
         timestamps: true,

@@ -11,6 +11,8 @@ export const Appointments = sequelizeDB.define(
     start_time: { type: DataTypes.TIME, allowNull: false, validate: { notEmpty: true } },
     end_time: { type: DataTypes.TIME, allowNull: false, validate: { notEmpty: true } },
     status: { type: DataTypes.ENUM("pending","confirmed","in_service","completed","cancelled","no_show"), defaultValue: "pending", allowNull: false },
+    updated_by: { type: DataTypes.INTEGER, allowNull: true, references: { model: 'users', key: 'id' } },
+    cancelled_by: { type: DataTypes.INTEGER, allowNull: true, references: { model: 'users', key: 'id' } },
     reason: { type: DataTypes.TEXT, allowNull: true, validate: { len: [0, 1000] } },
     notes: { type: DataTypes.TEXT, allowNull: false, validate: { len: [0, 2000] } },
     notification_sent: { type: DataTypes.BOOLEAN, defaultValue: false }
